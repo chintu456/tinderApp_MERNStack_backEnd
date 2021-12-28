@@ -20,7 +20,15 @@ mongoose.connect(connection_url, {
   //   useUnifiedTopology: true,
 });
 
-console.log(mongoose.connection.readyState);
+mongoose.connection
+  .once("open", () => {
+    console.log("DB connected");
+  })
+  .on("error", (error) => {
+    console.log("DB connection error:", error);
+  });
+
+console.log(`Hello Shikhar`);
 
 //API endpoints
 app.get("/", (req, res) => res.status(200).send("Hello CPI bhaiya"));
