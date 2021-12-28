@@ -20,6 +20,8 @@ mongoose.connect(connection_url, {
   //   useUnifiedTopology: true,
 });
 
+console.log(mongoose.connection.readyState);
+
 //API endpoints
 app.get("/", (req, res) => res.status(200).send("Hello CPI bhaiya"));
 
